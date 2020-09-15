@@ -2,6 +2,8 @@
 #define PLAYER_H
 
 #include "Character.h"
+#include "Animation.h"
+#include "RigidBody.h"
 
 class Player: public Character {
 
@@ -13,7 +15,9 @@ class Player: public Character {
         virtual void Clean();
 
     private:
-        int m_Row, m_Frame, m_FrameCount, m_AnimSpeed;
+        //int m_Row, m_Frame, m_FrameCount, m_AnimSpeed;
+        Animation* m_Animation;
+        RigidBody* m_RigidBody;
 };
 
 #endif // PLAYER_H

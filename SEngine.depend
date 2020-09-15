@@ -6,7 +6,7 @@
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
 
-1600121240 source:/home/klaus/Sources/SEngine/src/core/Engine.cpp
+1600178835 source:/home/klaus/Sources/SEngine/src/core/Engine.cpp
 	"Engine.h"
 	<iostream>
 	"TextureManager.h"
@@ -30,8 +30,10 @@
 	"TextureManager.h"
 	<SDL2/SDL.h>
 
-1600119936 /home/klaus/Sources/SEngine/src/Characters/Player.h
+1600192788 /home/klaus/Sources/SEngine/src/Characters/Player.h
 	"Character.h"
+	"Animation.h"
+	"RigidBody.h"
 
 1600119341 /home/klaus/Sources/SEngine/src/Characters/Character.h
 	"GameObject.h"
@@ -46,4 +48,15 @@
 
 1600120172 /home/klaus/Sources/SEngine/src/Physics/Transform.h
 	"Vector2D.h"
+
+1600182294 /home/klaus/Sources/SEngine/src/Graphics/Animation.h
+	"SDL2/SDL.h"
+	<string>
+
+1600194001 /home/klaus/Sources/SEngine/src/Physics/RigidBody.h
+	"Vector2D.h"
+
+1600182785 source:/home/klaus/Sources/SEngine/src/Graphics/Animation.cpp
+	"Animation.h"
+	"TextureManager.h"
 
