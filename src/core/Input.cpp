@@ -4,9 +4,7 @@
 // init singleton (static variables need to be initialized)
 Input* Input::s_Instance = nullptr;
 
-Input::Input() {
-    m_KeyStates = SDL_GetKeyboardState( nullptr );
-}
+Input::Input() { m_KeyStates = SDL_GetKeyboardState( nullptr ); }
 
 void Input::Listen()
 {
@@ -20,16 +18,13 @@ void Input::Listen()
     }
 }
 
-bool Input::GetKeyDown(SDL_Scancode key) {
+bool Input::GetKeyDown(SDL_Scancode key)
+{
     if( m_KeyStates[key] == 1 )
         return true;
     return false;
 }
 
-void Input::KeyUp() {
-    m_KeyStates = SDL_GetKeyboardState( nullptr );
-}
+void Input::KeyUp() { m_KeyStates = SDL_GetKeyboardState( nullptr ); }
 
-void Input::KeyDown() {
-    m_KeyStates = SDL_GetKeyboardState( nullptr );
-}
+void Input::KeyDown() { m_KeyStates = SDL_GetKeyboardState( nullptr ); }

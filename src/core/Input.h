@@ -5,9 +5,7 @@
 class Input
 {
     public:
-        static Input* GetInstance(){
-            return s_Instance = (s_Instance != nullptr)? s_Instance : new Input();
-        }
+        static Input* GetInstance() { return s_Instance = ( s_Instance != nullptr ) ? s_Instance : new Input(); }
 
         void Listen();
         bool GetKeyDown( SDL_Scancode key );

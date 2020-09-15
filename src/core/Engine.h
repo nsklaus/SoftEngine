@@ -10,9 +10,7 @@
 class Engine
 {
     public:
-        static Engine* GetInstance(){
-            return s_Instance = (s_Instance != nullptr)? s_Instance : new Engine();
-        }
+        static Engine* GetInstance() { return s_Instance = ( s_Instance != nullptr ) ? s_Instance : new Engine(); }
         bool Init();
         bool Clean();
         void Quit();
@@ -21,8 +19,8 @@ class Engine
         void Render();
         void Events();
 
-        inline bool IsRunning(){return m_IsRunning;}
-        inline SDL_Renderer* GetRenderer(){return m_Renderer;}
+        inline bool IsRunning() { return m_IsRunning; }
+        inline SDL_Renderer* GetRenderer() { return m_Renderer; }
 
     private:
         Engine(){};
