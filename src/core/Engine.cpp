@@ -2,6 +2,7 @@
 #include <iostream>
 #include "TextureManager.h"
 #include "Player.h"
+#include "Input.h"
 //#include "Vector2D.h"
 
 Engine* Engine::s_Instance = nullptr;
@@ -38,6 +39,9 @@ bool Engine::Init()
 
 void Engine::Update()
 {
+    if( Input::GetInstance()->GetKeyDown( SDL_SCANCODE_A ) ){
+        SDL_Log( " key A pushed " );
+    }
     samus->Update(0);
     // SDL_Log("blib blob blub");
     // std::cout << "it's running" << std::endl;
@@ -52,8 +56,9 @@ void Engine::Render()
     SDL_RenderPresent( m_Renderer );
 }
 
-void Engine::Events()
-{
+void Engine::Events() {
+    Input::GetInstance()->Listen();
+    /*
     SDL_Event event;
     SDL_PollEvent( &event );
     switch( event.type ){
@@ -61,6 +66,7 @@ void Engine::Events()
             Quit();
             break;
     }
+    */
 }
 
 
