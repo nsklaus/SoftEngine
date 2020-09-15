@@ -25,7 +25,7 @@ bool Engine::Init()
         SDL_Log( "Failed to create renderer: %s",SDL_GetError() );
         return false;
     }
-    TextureManager::GetInstance()->Load( "samus", "assets/samus.png" );
+    TextureManager::GetInstance()->Load( "samus", "assets/entities/samus.png" );
     // 528x624
     samus = new Player( new Properties("samus", 50, 50, 48, 48));
 //    Vector2D v1, v2;
