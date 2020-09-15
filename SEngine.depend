@@ -1,0 +1,49 @@
+# depslib dependency file v1.0
+1599925233 source:/home/klaus/Sources/SEngine/Main.cpp
+	"Engine.h"
+
+1599934740 /home/klaus/Sources/SEngine/src/core/Engine.h
+	<SDL2/SDL.h>
+	<SDL2/SDL_image.h>
+
+1600121240 source:/home/klaus/Sources/SEngine/src/core/Engine.cpp
+	"Engine.h"
+	<iostream>
+	"TextureManager.h"
+	"Player.h"
+
+1600102525 /home/klaus/Sources/SEngine/src/Graphics/TextureManager.h
+	<string>
+	<SDL2/SDL.h>
+	<SDL2/SDL_image.h>
+	<map>
+
+1600102732 source:/home/klaus/Sources/SEngine/src/Graphics/TextureManager.cpp
+	"TextureManager.h"
+	"Engine.h"
+
+1600098686 /home/klaus/Sources/SEngine/src/Physics/Vector2D.h
+	<iostream>
+
+1600121603 source:/home/klaus/Sources/SEngine/src/Characters/Player.cpp
+	"Player.h"
+	"TextureManager.h"
+	<SDL2/SDL.h>
+
+1600119936 /home/klaus/Sources/SEngine/src/Characters/Player.h
+	"Character.h"
+
+1600119341 /home/klaus/Sources/SEngine/src/Characters/Character.h
+	"GameObject.h"
+	<string>
+
+1600120998 /home/klaus/Sources/SEngine/src/Object/GameObject.h
+	"IObject.h"
+	"Transform.h"
+	"SDL2/SDL.h"
+
+1600099723 /home/klaus/Sources/SEngine/src/Object/IObject.h
+
+1600120172 /home/klaus/Sources/SEngine/src/Physics/Transform.h
+	"Vector2D.h"
+
