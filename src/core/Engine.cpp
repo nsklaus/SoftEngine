@@ -3,6 +3,8 @@
 #include "TextureManager.h"
 #include "Player.h"
 #include "Input.h"
+#include "Timer.h"
+#include "MapParser.h"
 
 Engine* Engine::s_Instance = nullptr;
 Player* Samus = nullptr;
@@ -15,7 +17,9 @@ bool Engine::Init()
         return false;
     }
 
-    m_Window = SDL_CreateWindow( "SSEngine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, 0 );
+
+    SDL_WindowFlags wf = ( SDL_WindowFlags ) ( SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI );
+    m_Window = SDL_CreateWindow( "SSEngine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, wf );
     if( m_Window == nullptr )
     {
         SDL_Log( "Failed to create window: %s",SDL_GetError() );
@@ -28,6 +32,16 @@ bool Engine::Init()
         SDL_Log( "Failed to create renderer: %s",SDL_GetError() );
         return false;
     }
+
+    if(!MapParser::GetInstance()->Load())
+    {
+        std::cout << "Failed to load map" << std::endl;
+        return false;
+    }
+
+    m_LevelMap = MapParser::GetInstance()->GetMap("map0001");
+
+
     TextureManager::GetInstance()->Load( "samus", "assets/entities/samus.png" );
     // tilesheet res: 528x624, tile res: 48x48
     Samus = new Player( new Properties("samus", 50, 50, 48, 48));
@@ -39,13 +53,16 @@ bool Engine::Init()
 
 void Engine::Update()
 {
-    Samus->Update(0);
+    float dt = Timer::GetInstance()->GetDeltaTime();
+    m_LevelMap->Update();
+    Samus->Update( dt );
 }
 
 void Engine::Render()
 {
     SDL_SetRenderDrawColor( m_Renderer, 124, 218, 254, 255 );
     SDL_RenderClear( m_Renderer );
+    m_LevelMap->Render();
     Samus->Draw();
     SDL_RenderPresent( m_Renderer );
 }

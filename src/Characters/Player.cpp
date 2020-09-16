@@ -7,7 +7,7 @@ Player::Player( Properties* props ): Character(props)
 {
     m_RigidBody = new RigidBody();
     m_Animation = new Animation();
-    m_Animation->SetProps( m_TextureID, 0, 6, 60 );
+    m_Animation->SetProps( m_TextureID, 6, 1, 60 );
 }
 
 void Player::Draw()
@@ -19,6 +19,7 @@ void Player::Update(float dt)
 {
     // default animation (idle)
     m_Animation->SetProps( "samus", 6, 1, 60 );
+
     // reset applying force
     m_RigidBody->UnSetForce();
 
@@ -39,9 +40,11 @@ void Player::Update(float dt)
     }
 
     // apply physics
-    m_RigidBody->Update( 0.8 );
+    m_RigidBody->Update( dt );
+
     // apply position
     m_Transform->TranslateX( m_RigidBody->GetPosition().X );
+
     // apply grativy
     // m_Transform->TranslateY( m_RigidBody->GetPosition().Y );
 
