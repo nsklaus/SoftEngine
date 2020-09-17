@@ -16,12 +16,12 @@ class MapParser
         inline static MapParser* GetInstance() { return s_Instance = ( s_Instance != nullptr ) ? s_Instance : new MapParser; }
 
     private:
+        MapParser(){};
         bool Parse( std::string id, std::string source );
         Tileset ParseTileset( TiXmlElement* xmlTileset );
-        TileLayer* ParseTileLayer( TiXmlElement* xmlLayer, TilesetList tilesets, int tilesize, int rowcount, int colcount );
+        TileLayer* ParseTileLayer( TiXmlElement* xmlLayer, std::vector<Tileset> tilesets, int tilesize, int rowcount, int colcount );
 
     private:
-        MapParser(){};
         static MapParser* s_Instance;
         std::map<std::string, GameMap*> m_MapDict;
 };

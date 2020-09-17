@@ -1,16 +1,16 @@
 #include "TileLayer.h"
 #include "TextureManager.h"
+#include <iostream>
 
-TileLayer::TileLayer(int tilesize, int rowcount, int colcount, TileMap tilemap, TilesetList tilesets):
-m_Tilesize(tilesize), m_RowCount(rowcount), m_ColCount(colcount), m_Tilemap(tilemap), m_Tilesets(tilesets)
+TileLayer::TileLayer(int tilesize, int rowcount, int colcount, TileMap tilemap, TilesetList tilesets)
+//:m_Tilesize(tilesize), m_RowCount(rowcount), m_ColCount(colcount), m_Tilemap(tilemap), m_Tilesets(tilesets)
 {
-    /*
+
     m_Tilesize = tilesize;
     m_RowCount = rowcount;
     m_ColCount = colcount;
     m_Tilemap  = tilemap;
     m_Tilesets = tilesets;
-    */
 
     for(unsigned int i=0; i < m_Tilesets.size(); i++)
     {
@@ -20,22 +20,19 @@ m_Tilesize(tilesize), m_RowCount(rowcount), m_ColCount(colcount), m_Tilemap(tile
 
 void TileLayer::Render()
 {
-    for(int i=0; i < m_RowCount; i++)
+    for( int i=0; i < m_RowCount; i++)
     {
-        for(int j=0; j < m_ColCount; j++)
+        for( int j=0; j < m_ColCount; j++)
         {
             int tileID = m_Tilemap[i][j];
-            if(tileID == 0)
+
+            if(tileID == 0){
                 continue;
-            else
-            {
-                int index;
-                if (m_Tilesets.size() > 1 )
-                {
-                    for(unsigned int k = 1; k < m_Tilesets.size(); k++)
-                    {
-                        if(tileID > m_Tilesets[k].FirstID && tileID < m_Tilesets[k].LastID)
-                        {
+            } else {
+                int index = 0;
+                if (m_Tilesets.size() > 1 ) {
+                    for(unsigned int k = 1; k < m_Tilesets.size(); k++) {
+                        if(tileID > m_Tilesets[k].FirstID && tileID < m_Tilesets[k].LastID) {
                             tileID = tileID + m_Tilesets[k].TileCount - m_Tilesets[k].LastID;
                             index = k;
                             break;
@@ -44,12 +41,11 @@ void TileLayer::Render()
                 }
 
                 Tileset ts = m_Tilesets[index];
-                int tileRow = tileID / ts.RowCount;
+                int tileRow = tileID / ts.ColCount;
                 int tileCol = tileID - tileRow*ts.ColCount-1;
 
                 // if tile is on last column
-                if(tileID % ts.ColCount == 0)
-                {
+                if(tileID % ts.ColCount == 0) {
                     tileRow --;
                     tileCol = ts.ColCount -1;
                 }
@@ -57,7 +53,6 @@ void TileLayer::Render()
             }
         }
     }
-
 }
 
 void TileLayer::Update()

@@ -1,6 +1,6 @@
 #include "MapParser.h"
 #include "SDL2/SDL.h"
-
+#include <iostream>
 
 MapParser* MapParser::s_Instance = nullptr;
 
@@ -47,7 +47,6 @@ bool MapParser::Parse(std::string id, std::string source)
     {
         if(e->Value() == std::string("layer"))
         {
-            SDL_Log( "condition was true" );
             TileLayer* tilelayer = ParseTileLayer(e, tilesets, tilesize, rowcount, colcount);
             gamemap->m_MapLayers.push_back(tilelayer);
         }
@@ -86,11 +85,10 @@ Tileset MapParser::ParseTileset(TiXmlElement* xmlTileset)
 
 TileLayer* MapParser::ParseTileLayer(TiXmlElement* xmlLayer, TilesetList tilesets, int tilesize, int rowcount, int colcount)
 {
-
     TiXmlElement* data;
     for(TiXmlElement* e = xmlLayer->FirstChildElement(); e != nullptr; e=e->NextSiblingElement())
     {
-        if(e->Value() == std::string( "data" ) )
+        if(e->Value() == std::string("data") )
         {
             data = e;
             break;
@@ -98,23 +96,23 @@ TileLayer* MapParser::ParseTileLayer(TiXmlElement* xmlLayer, TilesetList tileset
     }
 
     std::string matrix( data->GetText() );
-    std::istringstream iss( matrix);
+    std::istringstream iss( matrix );
     std::string id;
 
     TileMap tilemap( rowcount, std::vector<int>(colcount, 0));
-    for(int row = 0; (row < rowcount); row++ )
+    for(int row = 0; row < rowcount; row++ )
     {
-        for(int col = 0; (col = colcount); col++ )
+        for(int col = 0; (col < colcount); col++ )
         {
             getline(iss, id, ',');
             std::stringstream convertor(id);
             convertor >> tilemap[row][col];
-            if(!iss.good())
+            if(!iss.good()) {
                 break;
+            }
         }
-
     }
-    //SDL_Log("DEBUG: tilesize = %d, rowcount = %d, colcount = %d, tilemap = %d, tilesets = %s", tilesize, rowcount, colcount, tilemap[0][0], tilesets[0].Name.c_str());
+
     return (new TileLayer(tilesize, rowcount, colcount, tilemap, tilesets));
 }
 
