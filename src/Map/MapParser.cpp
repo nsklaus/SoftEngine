@@ -102,7 +102,7 @@ TileLayer* MapParser::ParseTileLayer(TiXmlElement* xmlLayer, TilesetList tileset
     TileMap tilemap( rowcount, std::vector<int>(colcount, 0));
     for(int row = 0; row < rowcount; row++ )
     {
-        for(int col = 0; (col < colcount); col++ )
+        for(int col = 0; col < colcount; col++ )
         {
             getline(iss, id, ',');
             std::stringstream convertor(id);
@@ -112,7 +112,6 @@ TileLayer* MapParser::ParseTileLayer(TiXmlElement* xmlLayer, TilesetList tileset
             }
         }
     }
-
     return (new TileLayer(tilesize, rowcount, colcount, tilemap, tilesets));
 }
 

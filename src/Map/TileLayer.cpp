@@ -5,7 +5,6 @@
 TileLayer::TileLayer(int tilesize, int rowcount, int colcount, TileMap tilemap, TilesetList tilesets)
 //:m_Tilesize(tilesize), m_RowCount(rowcount), m_ColCount(colcount), m_Tilemap(tilemap), m_Tilesets(tilesets)
 {
-
     m_Tilesize = tilesize;
     m_RowCount = rowcount;
     m_ColCount = colcount;
@@ -26,13 +25,17 @@ void TileLayer::Render()
         {
             int tileID = m_Tilemap[i][j];
 
-            if(tileID == 0){
+            if(tileID == 0)
                 continue;
-            } else {
+            else
+            {
                 int index = 0;
-                if (m_Tilesets.size() > 1 ) {
-                    for(unsigned int k = 1; k < m_Tilesets.size(); k++) {
-                        if(tileID > m_Tilesets[k].FirstID && tileID < m_Tilesets[k].LastID) {
+                if (m_Tilesets.size() > 1 )
+                {
+                    for(unsigned int k = 1; k < m_Tilesets.size(); k++)
+                    {
+                        if(tileID > m_Tilesets[k].FirstID && tileID < m_Tilesets[k].LastID)
+                        {
                             tileID = tileID + m_Tilesets[k].TileCount - m_Tilesets[k].LastID;
                             index = k;
                             break;
@@ -45,7 +48,8 @@ void TileLayer::Render()
                 int tileCol = tileID - tileRow*ts.ColCount-1;
 
                 // if tile is on last column
-                if(tileID % ts.ColCount == 0) {
+                if(tileID % ts.ColCount == 0)
+                {
                     tileRow --;
                     tileCol = ts.ColCount -1;
                 }

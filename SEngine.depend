@@ -3,7 +3,7 @@
 	"Engine.h"
 	"Timer.h"
 
-1600271921 /home/klaus/Sources/SEngine/src/core/Engine.h
+1600357415 /home/klaus/Sources/SEngine/src/core/Engine.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
 	"GameMap.h"
@@ -23,14 +23,15 @@
 	<SDL2/SDL_image.h>
 	<map>
 
-1600304448 source:/home/klaus/Sources/SEngine/src/Graphics/TextureManager.cpp
+1600362975 source:/home/klaus/Sources/SEngine/src/Graphics/TextureManager.cpp
 	"TextureManager.h"
 	"Engine.h"
+	"Camera.h"
 
 1600098686 /home/klaus/Sources/SEngine/src/Physics/Vector2D.h
 	<iostream>
 
-1600255001 source:/home/klaus/Sources/SEngine/src/Characters/Player.cpp
+1600360976 source:/home/klaus/Sources/SEngine/src/Characters/Player.cpp
 	<SDL2/SDL.h>
 	"Player.h"
 	"TextureManager.h"
@@ -45,10 +46,11 @@
 	"GameObject.h"
 	<string>
 
-1600305314 /home/klaus/Sources/SEngine/src/Object/GameObject.h
+1600361011 /home/klaus/Sources/SEngine/src/Object/GameObject.h
 	"IObject.h"
 	"Transform.h"
 	"SDL2/SDL.h"
+	"Point.h"
 
 1600099723 /home/klaus/Sources/SEngine/src/Object/IObject.h
 
@@ -79,7 +81,7 @@
 	"Timer.h"
 	"SDL2/SDL.h"
 
-1600309616 source:/home/klaus/Sources/SEngine/src/Map/TileLayer.cpp
+1600312030 source:/home/klaus/Sources/SEngine/src/Map/TileLayer.cpp
 	"TileLayer.h"
 	"TextureManager.h"
 	<iostream>
@@ -124,7 +126,7 @@
 	"tinyxml.h"
 	<windows.h>
 
-1600309616 source:/home/klaus/Sources/SEngine/src/Map/MapParser.cpp
+1600312203 source:/home/klaus/Sources/SEngine/src/Map/MapParser.cpp
 	"MapParser.h"
 	"SDL2/SDL.h"
 	<iostream>
@@ -139,4 +141,16 @@
 1600303809 /home/klaus/Sources/SEngine/src/Map/GameMap.h
 	"Layer.h"
 	<vector>
+
+1600361389 /home/klaus/Sources/SEngine/src/core/Point.h
+	<iostream>
+
+1600361217 source:/home/klaus/Sources/SEngine/src/core/Camera.cpp
+	"Camera.h"
+
+1600361235 /home/klaus/Sources/SEngine/src/core/Camera.h
+	"Point.h"
+	"Vector2D.h"
+	"SDL2/SDL.h"
+	"Engine.h"
 

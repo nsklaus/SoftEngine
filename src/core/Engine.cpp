@@ -5,6 +5,7 @@
 #include "Input.h"
 #include "Timer.h"
 #include "MapParser.h"
+#include "Camera.h"
 
 Engine* Engine::s_Instance = nullptr;
 Player* Samus = nullptr;
@@ -41,11 +42,12 @@ bool Engine::Init()
 
     m_LevelMap = MapParser::GetInstance()->GetMap("map0001");
 
-
+    TextureManager::GetInstance()->Load( "bg", "assets/backgrounds/bg.jpg" );
     TextureManager::GetInstance()->Load( "samus", "assets/entities/samus.png" );
     // tilesheet res: 528x624, tile res: 48x48
-    Samus = new Player( new Properties("samus", 50, 50, 48, 48));
+    Samus = new Player( new Properties("samus", 50, 190, 48, 48));
 
+    Camera::GetInstance()->SetTarget( Samus->GetOrigin() );
     m_IsRunning = true;
     return true;
 }
@@ -56,12 +58,15 @@ void Engine::Update()
     float dt = Timer::GetInstance()->GetDeltaTime();
     m_LevelMap->Update();
     Samus->Update( dt );
+    Camera::GetInstance()->Update( dt );
 }
 
 void Engine::Render()
 {
     SDL_SetRenderDrawColor( m_Renderer, 124, 218, 254, 255 );
     SDL_RenderClear( m_Renderer );
+
+    TextureManager::GetInstance()->Draw( "bg", 0, 0, 1024, 623 );
     m_LevelMap->Render();
     Samus->Draw();
     SDL_RenderPresent( m_Renderer );
