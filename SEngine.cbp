@@ -66,13 +66,19 @@
 		<Unit filename="src/Map/tinyxmlparser.cpp" />
 		<Unit filename="src/Object/GameObject.h" />
 		<Unit filename="src/Object/IObject.h" />
+		<Unit filename="src/Physics/Collider.h" />
+		<Unit filename="src/Physics/CollisionHandler.cpp" />
+		<Unit filename="src/Physics/CollisionHandler.h" />
 		<Unit filename="src/Physics/RigidBody.h" />
 		<Unit filename="src/Physics/Transform.h" />
 		<Unit filename="src/Physics/Vector2D.h" />
+		<Unit filename="src/core/Camera.cpp" />
+		<Unit filename="src/core/Camera.h" />
 		<Unit filename="src/core/Engine.cpp" />
 		<Unit filename="src/core/Engine.h" />
 		<Unit filename="src/core/Input.cpp" />
 		<Unit filename="src/core/Input.h" />
+		<Unit filename="src/core/Point.h" />
 		<Unit filename="src/core/Timer.cpp" />
 		<Unit filename="src/core/Timer.h" />
 		<Extensions />

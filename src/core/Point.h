@@ -16,7 +16,7 @@ class Point
         }
 
         // addition +=
-        inline friend Point operator+=( Point& p1, const Point &p2 ) {
+        inline friend Point operator+=( Point& p1, const Point& p2 ) {
             p1.X += p2.X;
             p1.Y += p2.Y;
             return p1;
@@ -28,7 +28,7 @@ class Point
         }
 
         // substraction -=
-        inline friend Point operator-=( Point& p1, const Point &p2 ) {
+        inline friend Point operator-=( Point& p1, const Point& p2 ) {
             p1.X -= p2.X;
             p1.Y -= p2.Y;
             return p1;

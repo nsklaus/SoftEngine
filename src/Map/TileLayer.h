@@ -5,6 +5,12 @@
 #include <vector>
 #include "Layer.h"
 
+//debug
+#include "Collider.h"
+#include "SDL2/SDL.h"
+#include "Camera.h"
+#include "Vector2D.h"
+
 struct Tileset
 {
     int FirstID, LastID;

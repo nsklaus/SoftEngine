@@ -19,8 +19,8 @@ bool Engine::Init()
     }
 
 
-    SDL_WindowFlags wf = ( SDL_WindowFlags ) ( SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI );
-    m_Window = SDL_CreateWindow( "SSEngine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, wf );
+    //SDL_WindowFlags wf = ( SDL_WindowFlags ) ( SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI );
+    m_Window = SDL_CreateWindow( "SSEngine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, 0 ); //, wf );
     if( m_Window == nullptr )
     {
         SDL_Log( "Failed to create window: %s",SDL_GetError() );
@@ -42,10 +42,10 @@ bool Engine::Init()
 
     m_LevelMap = MapParser::GetInstance()->GetMap("map0001");
 
-    TextureManager::GetInstance()->Load( "bg", "assets/backgrounds/bg.jpg" );
     TextureManager::GetInstance()->Load( "samus", "assets/entities/samus.png" );
-    // tilesheet res: 528x624, tile res: 48x48
-    Samus = new Player( new Properties("samus", 50, 190, 48, 48));
+    TextureManager::GetInstance()->Load( "bg", "assets/backgrounds/bg.jpg" );
+
+    Samus = new Player( new Properties("samus", 50, 190, 48, 48)); // tilesheet res: 528x624, tile res: 48x48
 
     Camera::GetInstance()->SetTarget( Samus->GetOrigin() );
     m_IsRunning = true;
@@ -56,8 +56,8 @@ bool Engine::Init()
 void Engine::Update()
 {
     float dt = Timer::GetInstance()->GetDeltaTime();
-    m_LevelMap->Update();
     Samus->Update( dt );
+    m_LevelMap->Update();
     Camera::GetInstance()->Update( dt );
 }
 
